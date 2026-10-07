@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I.CEMO 2027 - 1st Common Mathematics Entrance Olympiad</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f3ff',
+                            100: '#e0e7ff',
+                            400: '#818cf8',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#1e1b4b',
+                        },
+                        gold: {
+                            400: '#fbbf24',
+                            500: '#f59e0b',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #f1f5f9;
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        .hero-glow {
+            background: radial-gradient(circle at 50% 20%, rgba(99, 102, 241, 0.2), transparent 60%),
+                        radial-gradient(circle at 80% 80%, rgba(245, 158, 11, 0.12), transparent 50%);
+        }
+        .math-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .accordion-content.active {
+            max-height: 1000px;
+        }
+        .glow-border {
+            box-shadow: 0 0 20px -5px rgba(99, 102, 241, 0.3);
+        }
+    </style>
+</head>
+<body class="font-sans antialiased flex flex-col min-h-screen bg-slate-950 text-slate-100 math-pattern">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-40 glass-panel border-b border-slate-800 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center space-x-3">
+                <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-brand-600 to-indigo-500 flex items-center justify-center text-white shadow-lg shadow-brand-500/20">
+                    <span class="font-display font-black text-2xl">∑</span>
+                </div>
+                <div>
+                    <span class="font-display font-bold text-2xl tracking-tight bg-gradient-to-r from-white via-indigo-200 to-brand-400 bg-clip-text text-transparent">I.CEMO</span>
+                    <span class="block text-[10px] font-semibold text-slate-400 tracking-widest uppercase">1st Entrance Olympiad 2027</span>
+                </div>
+            </div>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-7 text-xs font-semibold text-slate-300">
+                <a href="#about" class="hover:text-brand-400 transition-colors">About</a>
+                <a href="#pattern" class="hover:text-brand-400 transition-colors">Exam Pattern</a>
+                <a href="#marking" class="hover:text-brand-400 transition-colors">Marking Scheme</a>
+                <a href="#rewards" class="hover:text-gold-400 transition-colors"><i class="fa-solid fa-trophy text-gold-400 mr-1"></i>Rewards</a>
+                <a href="#syllabus" class="hover:text-brand-400 transition-colors">Syllabus</a>
+                <a href="#rules" class="hover:text-red-400 transition-colors">Rules</a>
+                <a href="#register" class="px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-600/30 transition-all hover:scale-105 font-bold">
+                    Register Now
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="menuBtn" class="md:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 px-4 pt-3 pb-6 space-y-3">
+            <a href="#about" class="block py-2 text-slate-300 font-medium">About</a>
+            <a href="#pattern" class="block py-2 text-slate-300 font-medium">Exam Pattern & Stage</a>
+            <a href="#marking" class="block py-2 text-slate-300 font-medium">Marking Scheme</a>
+            <a href="#rewards" class="block py-2 text-gold-400 font-medium">Rewards & Cash Prizes</a>
+            <a href="#syllabus" class="block py-2 text-slate-300 font-medium">11th & 12th Syllabus</a>
+            <a href="#rules" class="block py-2 text-red-400 font-medium">Proctoring & Rules</a>
+            <a href="#register" class="block text-center py-2.5 rounded-xl bg-brand-600 text-white font-semibold">Register Now</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- Hero Section -->
+        <section id="about" class="relative overflow-hidden pt-12 pb-20 hero-glow">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-xs font-bold uppercase tracking-wider">
+                            <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                            Official Olympiad Portal 2027
+                        </div>
+                        
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight font-display leading-tight">
+                            I. Common Mathematics Entrance Olympiad <span class="bg-gradient-to-r from-brand-400 via-indigo-300 to-gold-400 bg-clip-text text-transparent">2027</span>
+                        </h1>
+                        
+                        <p class="text-base sm:text-lg text-slate-400 max-w-2xl mx-auto lg:mx-0">
+                            A premier competitive benchmark designed exclusively for <strong class="text-slate-200">Class 11th & 12th Mathematics</strong> students. Consisting of 1 Intensive Advance Stage with 30 high-penetration questions.
+                        </p>
+
+                        <!-- Highlighted Date Badges -->
+                        <div class="pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 text-xs sm:text-sm font-medium">
+                            <div class="w-full sm:w-auto flex items-center gap-3 bg-slate-900/90 px-4 py-3 rounded-2xl border border-emerald-500/30 text-emerald-300 shadow-lg">
+                                <i class="fa-solid fa-calendar-check text-base text-emerald-400"></i>
+                                <div>
+                                    <span class="block text-[10px] text-slate-400 uppercase font-bold">Registration Starts</span>
+                                    <span class="font-bold text-white">10 October 2026 (Saturday)</span>
+                                </div>
+                            </div>
+                            <div class="w-full sm:w-auto flex items-center gap-3 bg-slate-900/90 px-4 py-3 rounded-2xl border border-red-500/30 text-red-300 shadow-lg">
+                                <i class="fa-solid fa-hourglass-end text-base text-red-400"></i>
+                                <div>
+                                    <span class="block text-[10px] text-slate-400 uppercase font-bold">Last Date</span>
+                                    <span class="font-bold text-white">21 October 2026 (Wednesday)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Group -->
+                        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                            <a href="#register" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 text-white font-bold text-base shadow-lg shadow-brand-600/30 hover:shadow-indigo-500/50 hover:-translate-y-0.5 transition-all text-center">
+                                Register Yourself Now
+                            </a>
+                            <button onclick="openModal()" class="w-full sm:w-auto px-6 py-4 rounded-xl bg-slate-900 border border-slate-700 text-slate-200 hover:border-brand-500 hover:text-white font-semibold transition-all flex items-center justify-center gap-2 text-sm">
+                                <i class="fa-solid fa-bell text-gold-400"></i> Registration Notice
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Live Countdown Card -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-slate-900/90 rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-2xl relative glow-border">
+                            <div class="text-center mb-6">
+                                <span class="text-[10px] font-extrabold uppercase tracking-widest text-brand-400 px-3 py-1 bg-brand-500/10 rounded-full border border-brand-500/20">Official Timeline</span>
+                                <h3 class="text-xl font-bold font-display text-white mt-3">Registration Opening In</h3>
+                                <p class="text-xs text-slate-400 mt-0.5">Target: 10 October 2026 (Saturday)</p>
+                            </div>
+
+                            <!-- Countdown Numbers -->
+                            <div class="grid grid-cols-4 gap-2 text-center mb-6">
+                                <div class="bg-slate-950 rounded-2xl p-3 border border-slate-800">
+                                    <span id="days" class="block font-display text-2xl sm:text-3xl font-black text-brand-400">00</span>
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase">Days</span>
+                                </div>
+                                <div class="bg-slate-950 rounded-2xl p-3 border border-slate-800">
+                                    <span id="hours" class="block font-display text-2xl sm:text-3xl font-black text-brand-400">00</span>
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase">Hours</span>
+                                </div>
+                                <div class="bg-slate-950 rounded-2xl p-3 border border-slate-800">
+                                    <span id="minutes" class="block font-display text-2xl sm:text-3xl font-black text-brand-400">00</span>
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase">Mins</span>
+                                </div>
+                                <div class="bg-slate-950 rounded-2xl p-3 border border-slate-800">
+                                    <span id="seconds" class="block font-display text-2xl sm:text-3xl font-black text-brand-400">00</span>
+                                    <span class="text-[10px] font-bold text-slate-500 uppercase">Secs</span>
+                                </div>
+                            </div>
+
+                            <div class="space-y-3 border-t border-slate-800/80 pt-5 text-xs text-slate-300">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-400">Registration Windows:</span>
+                                    <span class="font-bold text-emerald-400">11 Days Only</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-400">Maximum Marks:</span>
+                                    <span class="font-bold text-gold-400">155 Marks</span>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span class="text-slate-400">Minimum Cutoff:</span>
+                                    <span class="font-bold text-indigo-300">47% of Nominal Marks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 1 STAGE - ADVANCE STAGE EXAM PATTERN -->
+        <section id="pattern" class="py-20 bg-slate-900/60 border-y border-slate-800 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-bold rounded-full uppercase tracking-widest">
+                        Single Stage Structure
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">
+                        1 Stage Examination — <span class="text-gold-400">Advance Stage</span>
+                    </h2>
+                    <p class="mt-3 text-slate-400 text-sm sm:text-base">
+                        Basic Stage consisting of exactly <strong class="text-slate-200">30 Questions</strong> across 6 rigorous problem formats.
+                    </p>
+                </div>
+
+                <!-- Stage Card Summary Banner -->
+                <div class="bg-gradient-to-r from-slate-900 via-indigo-950/40 to-slate-900 rounded-3xl p-8 border border-slate-800 mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+                    <div class="flex items-center gap-5">
+                        <div class="w-16 h-16 rounded-2xl bg-gold-500/20 border border-gold-500/30 text-gold-400 flex items-center justify-center font-display font-black text-2xl">
+                            30
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-white">Basic Stage Structure</h3>
+                            <p class="text-xs text-slate-400 mt-1">Total 30 Highly Crafted Analytical Questions | Max Marks: 155</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 text-xs">
+                        <span class="px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300"><i class="fa-solid fa-bullseye text-brand-400 mr-2"></i>30 Questions</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300"><i class="fa-solid fa-trophy text-gold-400 mr-2"></i>155 Max Marks</span>
+                        <span class="px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300"><i class="fa-solid fa-percent text-emerald-400 mr-2"></i>47% Cutoff</span>
+                    </div>
+                </div>
+
+                <!-- Question Distribution Breakdown -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-brand-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-brand-400 bg-brand-500/10 px-3 py-1 rounded-full border border-brand-500/20">10 Questions</span>
+                            <span class="text-xs text-slate-500">Format 01</span>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Single Integer / Single Numerical Type</h4>
+                        <p class="text-xs text-slate-400 mt-2">Exact numerical values or single digit integer solutions.</p>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-brand-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-indigo-400 bg-indigo-500/10 px-3 py-1 rounded-full border border-indigo-500/20">08 Questions</span>
+                            <span class="text-xs text-slate-500">Format 02</span>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Multiple Integer / Multiple Numerical Type</h4>
+                        <p class="text-xs text-slate-400 mt-2">Multi-part numerical values requiring deep precision.</p>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-brand-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">02 Questions</span>
+                            <span class="text-xs text-slate-500">Format 03</span>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Single Correct Type Question</h4>
+                        <p class="text-xs text-slate-400 mt-2">Standard four-option multiple choice with 1 correct option.</p>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-brand-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-gold-400 bg-gold-500/10 px-3 py-1 rounded-full border border-gold-500/20">06 Questions</span>
+                            <span class="text-xs text-slate-500">Format 04</span>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Multiple Correct Type Question</h4>
+                        <p class="text-xs text-slate-400 mt-2">One or more options correct. Partial marking rules apply.</p>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-brand-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-amber-400 bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">02 Questions</span>
+                            <span class="text-xs text-slate-500">Format 05</span>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Single Matrix Match Type Question</h4>
+                        <p class="text-xs text-slate-400 mt-2">Includes <strong>7 Order</strong> and <strong>9 Order</strong> Matrix Matching columns.</p>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-2xl p-6 border border-slate-800 hover:border-brand-500/50 transition-all">
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-3 py-1 rounded-full border border-purple-500/20">02 Questions</span>
+                            <span class="text-xs text-slate-500">Format 06</span>
+                        </div>
+                        <h4 class="font-bold text-white text-base">Multiple Matrix Match Type Question</h4>
+                        <p class="text-xs text-slate-400 mt-2">Includes <strong>5 Order</strong> and <strong>7 Order</strong> Multiple Matrix Matching.</p>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- MARKING SCHEME SECTION -->
+        <section id="marking" class="py-20 bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="px-3 py-1 bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold rounded-full uppercase tracking-widest">
+                        Evaluation Criteria
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">
+                        Official Marking Scheme
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-2">
+                        Maximum Marks: <strong class="text-gold-400">155 Marks</strong> | Minimum Cutoff: <strong class="text-indigo-300">47% of Nominal Marks</strong>
+                    </p>
+                </div>
+
+                <!-- Interactive Responsive Table -->
+                <div class="bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden shadow-2xl">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-slate-950 border-b border-slate-800 text-slate-400 text-xs font-bold uppercase tracking-wider">
+                                    <th class="p-4 sm:p-5">Question Type</th>
+                                    <th class="p-4 sm:p-5 text-center">Correct Mark</th>
+                                    <th class="p-4 sm:p-5 text-center">Incorrect Mark</th>
+                                    <th class="p-4 sm:p-5 text-center">Unattempted Penalty</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-800 text-xs sm:text-sm">
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Single Integer / Single Numerical Type</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+4</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-1</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-amber-400 bg-amber-500/5">-1</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Multiple Integer / Multiple Numerical Type</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+5</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-2</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-amber-400 bg-amber-500/5">-1</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Single Correct Type Question</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+4</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-1</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-amber-400 bg-amber-500/5">-1</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Multiple Correct Type Question</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+5</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-1 / incorrect opt</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-amber-400 bg-amber-500/5">-2</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Single Matrix Match (7 Order)</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+7</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-3</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-slate-400 bg-slate-800/20">0</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Single Matrix Match (9 Order)</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+9</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-4</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-slate-400 bg-slate-800/20">0</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Multiple Matrix Match (5 Order)</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+10</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-4</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-slate-400 bg-slate-800/20">0</td>
+                                </tr>
+                                <tr class="hover:bg-slate-800/40 transition-colors">
+                                    <td class="p-4 sm:p-5 font-semibold text-white">Multiple Matrix Match (7 Order)</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-emerald-400 bg-emerald-500/5">+14</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-red-400 bg-red-500/5">-5</td>
+                                    <td class="p-4 sm:p-5 text-center font-bold text-slate-400 bg-slate-800/20">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- REWARD & AWARDING SYSTEM -->
+        <section id="rewards" class="py-20 bg-slate-900/80 border-y border-slate-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <span class="px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 text-xs font-bold rounded-full uppercase tracking-widest">
+                        Excellence Rewarded
+                    </span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">
+                        Reward & Awarding System
+                    </h2>
+                    <p class="text-slate-400 text-sm mt-2">
+                        Earn cash prizes, medals, and national distinction based on your score threshold.
+                    </p>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+                    
+                    <!-- 130+ Marks -->
+                    <div class="bg-gradient-to-b from-amber-500/20 via-slate-900 to-slate-900 rounded-3xl p-6 border border-amber-500/40 text-center relative flex flex-col justify-between hover:scale-105 transition-transform shadow-xl">
+                        <div class="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-0.5 rounded-full bg-gold-500 text-slate-950 font-black text-[10px] uppercase">
+                            Top Rankers
+                        </div>
+                        <div>
+                            <div class="text-3xl font-black font-display text-gold-400 mb-1 mt-2">130+</div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Score Threshold</span>
+                            <div class="my-6">
+                                <div class="text-2xl font-black text-white font-display">₹ 2,10,000</div>
+                                <span class="text-xs text-amber-300 font-semibold">Cash Prize + Trophy</span>
+                            </div>
+                        </div>
+                        <div class="text-[11px] text-slate-400 border-t border-slate-800 pt-3">National Gold Medalist & Distinction</div>
+                    </div>
+
+                    <!-- 100+ Marks -->
+                    <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 text-center flex flex-col justify-between hover:border-brand-500/50 transition-all">
+                        <div>
+                            <div class="text-3xl font-black font-display text-brand-400 mb-1">100+</div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Score Threshold</span>
+                            <div class="my-6">
+                                <div class="text-2xl font-black text-white font-display">₹ 1,10,000</div>
+                                <span class="text-xs text-brand-300 font-semibold">Cash Prize + Medal</span>
+                            </div>
+                        </div>
+                        <div class="text-[11px] text-slate-400 border-t border-slate-800 pt-3">National Silver Distinction</div>
+                    </div>
+
+                    <!-- 90+ Marks -->
+                    <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 text-center flex flex-col justify-between hover:border-indigo-500/50 transition-all">
+                        <div>
+                            <div class="text-3xl font-black font-display text-indigo-400 mb-1">90+</div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Score Threshold</span>
+                            <div class="my-6">
+                                <div class="text-2xl font-black text-white font-display">₹ 90,000</div>
+                                <span class="text-xs text-indigo-300 font-semibold">Cash Prize</span>
+                            </div>
+                        </div>
+                        <div class="text-[11px] text-slate-400 border-t border-slate-800 pt-3">National Bronze Distinction</div>
+                    </div>
+
+                    <!-- 50+ Marks -->
+                    <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800 text-center flex flex-col justify-between hover:border-emerald-500/50 transition-all">
+                        <div>
+                            <div class="text-3xl font-black font-display text-emerald-400 mb-1">50+</div>
+                            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Score Threshold</span>
+                            <div class="my-6">
+                                <div class="text-lg font-extrabold text-emerald-300 font-display">Certificate</div>
+                                <span class="text-xs text-slate-300">Of Appreciation</span>
+                            </div>
+                        </div>
+                        <div class="text-[11px] text-slate-400 border-t border-slate-800 pt-3">Official Olympiad Merit Certificate</div>
+                    </div>
+
+                    <!-- 10+ Marks -->
+                    <div class="bg-slate-900 rounded-3xl p-6 border border-slate-800/60 text-center flex flex-col justify-between opacity-80">
+                        <div>
+                            <div class="text-3xl font-black font-display text-slate-500 mb-1">10+</div>
+                            <span class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Score Threshold</span>
+                            <div class="my-6">
+                                <div class="text-base font-bold text-slate-400 font-display">No Reward</div>
+                                <span class="text-[11px] text-slate-500">Participation Grade</span>
+                            </div>
+                        </div>
+                        <div class="text-[11px] text-slate-500 border-t border-slate-800/80 pt-3">Minimum Criteria Unmet</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPLETE 11TH & 12TH SYLLABUS SECTION -->
+        <section id="syllabus" class="py-20 bg-slate-950">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-6">
+                    <div>
+                        <span class="px-3 py-1 bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold rounded-full uppercase tracking-widest">
+                            Curriculum Breakdown
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">
+                            Complete 11th & 12th Mathematics Syllabus
+                        </h2>
+                    </div>
+
+                    <div class="flex items-center gap-3">
+                        <button onclick="downloadSyllabusPDF()" class="px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-brand-500 transition-all text-xs font-semibold flex items-center gap-2">
+                            <i class="fa-solid fa-file-pdf text-red-400"></i> Download PDF
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Custom Exam Philosophy Banner Quote -->
+                <div class="bg-gradient-to-r from-brand-950/60 via-slate-900 to-indigo-950/60 p-6 rounded-2xl border border-brand-500/30 mb-8 text-center relative overflow-hidden">
+                    <i class="fa-solid fa-quote-left text-brand-500/10 text-6xl absolute left-4 top-2"></i>
+                    <p class="font-display font-bold text-lg sm:text-xl text-indigo-200 relative z-10 italic">
+                        "This exam isn't made to complete it, it is made to observe how a student can penetrate."
+                    </p>
+                    <span class="block text-xs font-bold text-brand-400 mt-2 tracking-wider uppercase">— I.CEMO Academic Council Philosophy</span>
+                </div>
+
+                <!-- Controls: Class Tabs + Search Bar -->
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8 bg-slate-900/90 p-3 rounded-2xl border border-slate-800">
+                    <div class="flex items-center gap-2 w-full sm:w-auto">
+                        <button id="btnAll" onclick="filterClass('all')" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-bold text-xs bg-brand-600 text-white shadow-md transition-all">
+                            All Syllabus
+                        </button>
+                        <button id="btn11" onclick="filterClass('11')" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-400 hover:text-white transition-all">
+                            Class 11th
+                        </button>
+                        <button id="btn12" onclick="filterClass('12')" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-400 hover:text-white transition-all">
+                            Class 12th
+                        </button>
+                    </div>
+
+                    <div class="relative w-full sm:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-xs"></i>
+                        <input type="text" id="topicSearch" onkeyup="searchTopics()" placeholder="Search topic (e.g. Calculus, Matrices)..." class="w-full pl-9 pr-4 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-xs placeholder-slate-500 focus:outline-none focus:border-brand-500">
+                    </div>
+                </div>
+
+                <!-- Syllabus Accordions Container -->
+                <div class="space-y-6" id="syllabusContainer">
+
+                    <!-- CLASS 11 HEADER -->
+                    <div class="class-11-block">
+                        <div class="flex items-center gap-3 mb-4 pt-2">
+                            <span class="px-3 py-1 rounded-lg bg-indigo-500/20 text-indigo-300 font-extrabold text-xs">CLASS 11TH</span>
+                            <h3 class="text-xl font-bold text-white font-display">Class 11th Syllabus</h3>
+                            <div class="h-px bg-slate-800 flex-grow"></div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <!-- Module 1 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="sets relations functions trigonometry class 11">
+                                <button onclick="toggleAccordion('c11-m1')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">01</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Sets, Relations & Trigonometry</h4>
+                                            <p class="text-[11px] text-slate-400">Sets, Functions & Trigonometric Equations</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c11-m1" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c11-m1" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Sets & Relations:</strong> Types of sets, Venn diagrams, Cartesian product, Domain & Range.</p>
+                                    <p>• <strong>Trigonometric Functions:</strong> Trigonometric identities, Compound angles, General solutions of equations.</p>
+                                </div>
+                            </div>
+
+                            <!-- Module 2 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="algebra complex numbers quadratic equations permutations combinations binomial theorem sequences series class 11">
+                                <button onclick="toggleAccordion('c11-m2')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">02</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Algebra & Combinatorics</h4>
+                                            <p class="text-[11px] text-slate-400">Complex numbers, Quadratic, P&C, Binomial, Sequences</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c11-m2" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c11-m2" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Complex Numbers & Quadratic:</strong> Argand plane, Discriminant analysis, Roots of unity.</p>
+                                    <p>• <strong>Permutations & Combinations:</strong> Counting principles, Factorials, nPr & nCr applications.</p>
+                                    <p>• <strong>Sequences & Series:</strong> AP, GP, Sum to n terms, AGP series.</p>
+                                </div>
+                            </div>
+
+                            <!-- Module 3 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="coordinate geometry straight lines conic sections circle parabola ellipse hyperbola class 11">
+                                <button onclick="toggleAccordion('c11-m3')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">03</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Coordinate Geometry</h4>
+                                            <p class="text-[11px] text-slate-400">Straight lines & Conic Sections</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c11-m3" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c11-m3" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Straight Lines:</strong> Slopes, Angles, Distance formula, Family of lines.</p>
+                                    <p>• <strong>Conic Sections:</strong> Circles, Parabolas, Ellipses, Hyperbolas standard equations.</p>
+                                </div>
+                            </div>
+
+                            <!-- Module 4 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="calculus limits derivatives statistics probability class 11">
+                                <button onclick="toggleAccordion('c11-m4')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold text-xs">04</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Calculus & Statistics</h4>
+                                            <p class="text-[11px] text-slate-400">Limits, Derivatives, Variance, Probability</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c11-m4" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c11-m4" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Limits & Derivatives:</strong> First principles, Standard limits, Product & Quotient rules.</p>
+                                    <p>• <strong>Statistics & Probability:</strong> Mean deviation, Variance, Axiomatic probability.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- CLASS 12 HEADER -->
+                    <div class="class-12-block pt-6">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="px-3 py-1 rounded-lg bg-gold-500/20 text-gold-300 font-extrabold text-xs">CLASS 12TH</span>
+                            <h3 class="text-xl font-bold text-white font-display">Class 12th Syllabus</h3>
+                            <div class="h-px bg-slate-800 flex-grow"></div>
+                        </div>
+
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <!-- Module 1 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="relations functions inverse trigonometry matrices determinants class 12">
+                                <button onclick="toggleAccordion('c12-m1')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-xs">01</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Algebra & Matrices</h4>
+                                            <p class="text-[11px] text-slate-400">Inverse Trig, Matrices, Determinants</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c12-m1" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c12-m1" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Matrices & Determinants:</strong> Operations, Inverse, System of linear equations, Properties.</p>
+                                    <p>• <strong>Inverse Trigonometry:</strong> Domain, Range, Principal value branches, Algebraic properties.</p>
+                                </div>
+                            </div>
+
+                            <!-- Module 2 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="differential calculus continuity differentiability derivatives aod application of derivatives class 12">
+                                <button onclick="toggleAccordion('c12-m2')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-xs">02</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Differential Calculus & AOD</h4>
+                                            <p class="text-[11px] text-slate-400">Continuity, Chain Rule, Maxima & Minima</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c12-m2" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c12-m2" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Continuity & Differentiability:</strong> Implicit differentiation, Logarithmic & Parametric differentiation.</p>
+                                    <p>• <strong>Applications of Derivatives:</strong> Rate of change, Monotonicity, Tangents & Normals, Maxima & Minima.</p>
+                                </div>
+                            </div>
+
+                            <!-- Module 3 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="integral calculus indefinite definite integrals differential equations aoi class 12">
+                                <button onclick="toggleAccordion('c12-m3')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-xs">03</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Integral Calculus & DE</h4>
+                                            <p class="text-[11px] text-slate-400">Integrals, Area Under Curves, DE</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c12-m3" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c12-m3" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Integral Calculus:</strong> Definite & Indefinite integrals, Partial fractions, Integration by parts.</p>
+                                    <p>• <strong>Differential Equations:</strong> Order, Degree, Homogeneous & First-order linear DE.</p>
+                                </div>
+                            </div>
+
+                            <!-- Module 4 -->
+                            <div class="topic-card bg-slate-900 rounded-2xl border border-slate-800/80 overflow-hidden" data-title="vector algebra 3d geometry linear programming probability Bayes theorem class 12">
+                                <button onclick="toggleAccordion('c12-m4')" class="w-full p-5 text-left flex items-center justify-between hover:bg-slate-800/50 transition-colors">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-lg bg-gold-500/20 text-gold-400 flex items-center justify-center font-bold text-xs">04</div>
+                                        <div>
+                                            <h4 class="font-bold text-white text-sm">Vectors, 3D & Advanced Probability</h4>
+                                            <p class="text-[11px] text-slate-400">Dot/Cross product, 3D geometry, Bayes Theorem</p>
+                                        </div>
+                                    </div>
+                                    <i id="icon-c12-m4" class="fa-solid fa-chevron-down text-slate-500 text-xs transition-transform"></i>
+                                </button>
+                                <div id="c12-m4" class="accordion-content border-t border-slate-800/60 bg-slate-950/50 p-5 space-y-2 text-xs text-slate-300">
+                                    <p>• <strong>Vectors & 3D:</strong> Vector products, Shortest distance between lines, Equations of planes.</p>
+                                    <p>• <strong>Probability & LPP:</strong> Conditional probability, Bayes' Theorem, Linear Programming.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- RULES & REGULATIONS PAGE / SECTION -->
+        <section id="rules" class="py-20 bg-slate-900/60 border-y border-slate-800">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="bg-gradient-to-b from-red-950/40 via-slate-900 to-slate-900 rounded-3xl p-8 sm:p-10 border border-red-500/30 shadow-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 rounded-2xl bg-red-500/20 border border-red-500/40 text-red-400 flex items-center justify-center text-xl">
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-red-400">Proctoring Protocol</span>
+                            <h2 class="text-2xl sm:text-3xl font-extrabold font-display text-white">Rules & Regulations</h2>
+                        </div>
+                    </div>
+
+                    <!-- Highlighted Warning Box -->
+                    <div class="bg-red-500/10 border border-red-500/40 rounded-2xl p-5 mb-6 text-red-200 text-xs sm:text-sm leading-relaxed flex items-start gap-4">
+                        <i class="fa-solid fa-video text-red-400 text-lg mt-0.5"></i>
+                        <div>
+                            <strong class="text-white block mb-1 uppercase tracking-wider text-xs font-extrabold">Mandatory Surveillance Warning:</strong>
+                            When you start your Examination, you are under high sensitivity surveillance. Your <strong>Camera & Microphone</strong> will be continuously recording you throughout the entire duration of the test.
+                        </div>
+                    </div>
+
+                    <ul class="space-y-4 text-xs sm:text-sm text-slate-300">
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-exclamation text-amber-400 mt-1"></i>
+                            <span><strong>Page Switching Restricted:</strong> Tab changes or minimizing the exam window will result in an immediate automatic test submission.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-exclamation text-amber-400 mt-1"></i>
+                            <span><strong>Audio & Video Feed:</strong> Clear room lighting and unobstructed microphone input are compulsory during the full 30-question test session.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <i class="fa-solid fa-circle-exclamation text-amber-400 mt-1"></i>
+                            <span><strong>Identification Verification:</strong> Admit card along with valid school/photo ID must be scanned before launch.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- REGISTRATION SECTION -->
+        <section id="register" class="py-20 bg-slate-900 relative">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-br from-slate-950 via-slate-900 to-brand-950 rounded-3xl p-8 sm:p-12 border border-slate-800 shadow-2xl relative overflow-hidden">
+                    
+                    <div class="text-center max-w-2xl mx-auto mb-8">
+                        <span class="px-3 py-1 bg-gold-500/20 text-gold-300 text-xs font-bold rounded-full uppercase tracking-wider border border-gold-500/30">
+                            Registration Portal
+                        </span>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">
+                            Registration Form Out Soon ..
+                        </h2>
+                        <p class="text-slate-400 text-xs sm:text-sm mt-2">
+                            Official window opens on <strong class="text-gold-400">10 October 2026 (Saturday)</strong> and closes on <strong class="text-red-400">21 October 2026 (Wednesday)</strong>.
+                        </p>
+                    </div>
+
+                    <!-- Lock Notice Card -->
+                    <div class="bg-slate-950/80 rounded-2xl p-6 border border-brand-500/30 text-center mb-8">
+                        <div class="w-12 h-12 bg-brand-500/20 rounded-xl flex items-center justify-center text-brand-400 mx-auto mb-3 text-xl">
+                            <i class="fa-solid fa-lock"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white">Official Registration Opens in October</h3>
+                        <p class="text-xs text-slate-400 mt-1 max-w-lg mx-auto">
+                            Submit your email/phone below to receive instant SMS & Email reminder when the application form goes live.
+                        </p>
+                    </div>
+
+                    <form id="notifyForm" class="space-y-4 max-w-xl mx-auto">
+                        <div class="grid sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Student Name *</label>
+                                <input type="text" required placeholder="Full Name" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-brand-500 text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Mobile / Whatsapp *</label>
+                                <input type="tel" required placeholder="+91 98765 43210" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-brand-500 text-xs">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Email Address *</label>
+                            <input type="email" required placeholder="student@example.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-white placeholder-slate-600 focus:outline-none focus:border-brand-500 text-xs">
+                        </div>
+
+                        <div id="formAlert" class="hidden p-4 rounded-xl text-xs font-medium"></div>
+
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-extrabold text-sm shadow-lg shadow-brand-600/30 transition-all">
+                            Notify Me When Form Opens (10th Oct)
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-slate-800/80 py-10 text-xs text-slate-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-brand-600 flex items-center justify-center text-white font-bold text-base">∑</div>
+                <span class="font-display font-bold text-slate-200 text-sm">I.CEMO 2027</span>
+            </div>
+            <p>© 2026-2027 1st Common Mathematics Entrance Olympiad. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ANNOUNCEMENT POPUP MODAL -->
+    <div id="promoModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-md opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-slate-900 rounded-3xl max-w-md w-full p-6 sm:p-8 border border-slate-700 shadow-2xl relative transform scale-95 transition-transform duration-300 id-modal-content">
+            
+            <button onclick="closeModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition-colors">
+                <i class="fa-solid fa-xmark text-sm"></i>
+            </button>
+
+            <div class="text-center">
+                <div class="w-16 h-16 bg-gradient-to-tr from-brand-600 to-indigo-500 text-white rounded-2xl flex items-center justify-center font-display font-black text-3xl mx-auto shadow-lg shadow-brand-500/30 mb-4 animate-pulse">
+                    ∑
+                </div>
+                
+                <span class="inline-block px-3 py-1 bg-gold-500/10 border border-gold-500/30 text-gold-400 text-[10px] font-extrabold uppercase tracking-widest rounded-full mb-2">
+                    Official Announcement
+                </span>
+
+                <h2 class="text-2xl sm:text-3xl font-black font-display text-white leading-tight">
+                    Registration Open - I.CEMO
+                </h2>
+                <p class="text-xs font-semibold text-brand-400 mt-1">
+                    1st Common Mathematics Entrance Olympiad 2027
+                </p>
+            </div>
+
+            <div class="mt-5 bg-slate-950 rounded-2xl p-5 border border-slate-800 text-center space-y-3">
+                <div class="space-y-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-emerald-400">Registration Starting</p>
+                    <div class="text-lg font-black text-white">10 October 2026, Saturday</div>
+                </div>
+
+                <div class="h-px bg-slate-800"></div>
+
+                <div class="space-y-1">
+                    <p class="text-[10px] font-bold uppercase tracking-widest text-red-400">Last Date of Registration</p>
+                    <div class="text-lg font-black text-white">21 October 2026, Wednesday</div>
+                </div>
+
+                <p class="text-xs text-slate-400 pt-2 border-t border-slate-800/80">
+                    Register Yourself from 08 October 2026 / 10 October 2026! Exclusively for Class 11th & 12th Mathematics.
+                </p>
+            </div>
+
+            <div class="mt-6 space-y-2">
+                <a href="#register" onclick="closeModal()" class="block w-full py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 text-white font-bold text-xs text-center shadow-lg shadow-brand-600/30 transition-all">
+                    Check Registration Window
+                </a>
+                <button onclick="closeModal()" class="w-full py-2 text-xs font-semibold text-slate-500 hover:text-slate-300">
+                    Close Notice
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Handlers
+        const modal = document.getElementById('promoModal');
+        const modalContent = modal.querySelector('.id-modal-content');
+
+        function openModal() {
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+            modalContent.classList.remove('scale-95');
+            modalContent.classList.add('scale-100');
+        }
+
+        function closeModal() {
+            modal.classList.remove('opacity-100');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-95');
+        }
+
+        // Auto trigger modal on load
+        window.addEventListener('load', () => {
+            setTimeout(openModal, 400);
+        });
+
+        // Countdown Timer targeting 10 October 2026
+        const targetDate = new Date('October 10, 2026 00:00:00').getTime();
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const diff = targetDate - now;
+
+            if (diff > 0) {
+                document.getElementById('days').innerText = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+                document.getElementById('hours').innerText = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+            } else {
+                document.getElementById('days').innerText = "00";
+                document.getElementById('hours').innerText = "00";
+                document.getElementById('minutes').innerText = "00";
+                document.getElementById('seconds').innerText = "00";
+            }
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        // Mobile Menu Toggle
+        document.getElementById('menuBtn').addEventListener('click', () => {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        });
+
+        // Accordion Toggle Logic
+        function toggleAccordion(id) {
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            
+            content.classList.toggle('active');
+            if (content.classList.contains('active')) {
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+
+        // Syllabus Class Filter Logic
+        function filterClass(cls) {
+            const c11 = document.querySelector('.class-11-block');
+            const c12 = document.querySelector('.class-12-block');
+            
+            const btnAll = document.getElementById('btnAll');
+            const btn11 = document.getElementById('btn11');
+            const btn12 = document.getElementById('btn12');
+
+            [btnAll, btn11, btn12].forEach(b => {
+                b.className = 'flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-bold text-xs bg-slate-800 text-slate-400 hover:text-white transition-all';
+            });
+
+            if (cls === 'all') {
+                c11.style.display = 'block';
+                c12.style.display = 'block';
+                btnAll.className = 'flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-bold text-xs bg-brand-600 text-white shadow-md transition-all';
+            } else if (cls === '11') {
+                c11.style.display = 'block';
+                c12.style.display = 'none';
+                btn11.className = 'flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-bold text-xs bg-brand-600 text-white shadow-md transition-all';
+            } else if (cls === '12') {
+                c11.style.display = 'none';
+                c12.style.display = 'block';
+                btn12.className = 'flex-1 sm:flex-none px-5 py-2.5 rounded-xl font-bold text-xs bg-brand-600 text-white shadow-md transition-all';
+            }
+        }
+
+        // Topic Search Functionality
+        function searchTopics() {
+            const query = document.getElementById('topicSearch').value.toLowerCase();
+            const cards = document.querySelectorAll('.topic-card');
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Download Syllabus Simulation
+        function downloadSyllabusPDF() {
+            window.print();
+        }
+
+        // Notify Form Submit
+        document.getElementById('notifyForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const alertBox = document.getElementById('formAlert');
+            alertBox.classList.remove('hidden');
+            alertBox.className = 'p-4 rounded-xl text-xs font-medium bg-emerald-500/20 border border-emerald-500/30 text-emerald-300';
+            alertBox.innerHTML = '<i class="fa-solid fa-circle-check mr-2"></i> Details Saved! You will receive notification as soon as the registration form opens on 10 October 2026.';
+            e.target.reset();
+        });
+    </script>
+</body>
+</html>
